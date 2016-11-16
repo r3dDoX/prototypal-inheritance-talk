@@ -232,8 +232,35 @@ person.name; // 'Hans'
                     <div class="zuehlke-splash-title">What makes them great?</div>
                 </div>
               </section>
+              <section data-background="images/live-coding.jpg"></section>
               <section>
-                <h2>OLOO</h2>
+                <h2>What does `new` do?</h2>
+                <ul>
+                  <li class="fragment" data-fragment-index="1">Creates empty object</li>
+                  <li class="fragment" data-fragment-index="2">Lets [[Prototype]] point to Prototype of `constructor` function</li>
+                  <li class="fragment" data-fragment-index="3">Lets `this` point to newly created object</li>
+                  <li class="fragment" data-fragment-index="4">Executes `constructor` function</li>
+                  <li class="fragment" data-fragment-index="5">Adds property `constructor` which points to called function</li>
+                  <li class="fragment" data-fragment-index="6">Returns newly created object</li>
+                </ul>
+                <aside class="notes">
+                  Prototypal inheritance with constructor<br>
+                  only introduced to look more like classical inheritance languages
+                </aside>
+              </section>
+              <section data-background="images/live-coding.jpg"></section>
+              <section>
+                <h2>What does `Object.create` do?</h2>
+                <p>
+                  Let's just hack it ourselves...
+                </p>
+                <aside class="notes">
+                  If you're feeling fance, write your own...<br>
+                  on MDN 20 lines a lot more performance optimized
+                </aside>
+              </section>
+              <section>
+                <h2>Advantages</h2>
                 <ul>
                   <li>How JS Objects work</li>
                   <li>Simple</li>
