@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>.: Zuehlke Demo :.</title>
+    <title>.: Prototypal Inheritance :.</title>
 
     <meta name="description" content="A DEMO Presentation with a zuehlke Template and the reveal.js presentation framework">
     <meta name="author" content="Type your name here">
@@ -44,10 +44,6 @@
             return link;
         }
     </script>
-
-    <!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
 </head>
 
 <body>
@@ -56,165 +52,206 @@
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides">
-            <span id="zuehlke-header" class="zuehlke-header hide"></span>
+            <section data-background="images/ctd-intro.jpg" data-background-size="contain" data-background-color="#0A2431">
+              <div class="zuehlke-center">
+                <h1>Why you should care about Prototypal Inheritance</h1>
+              </div>
+            </section>
+
             <section>
-                <div class="zuehlke-center" style="margin-top: 30px;">
-                    <div class="zuehlke-zuerfel"></div>
-                    <div style="margin-top: 40px; font-weight: bold; letter-spacing: 0.2em;">WELCOME TO THE DEMO</div>
-                    <div style="margin-top: 10px; font-size: 0.6em">Isabel Züger &amp; Ben Millo</div>
+              <section data-state='orange'>
+                <div class="zuehlke-center">
+                    <div class="zuehlke-splash-title">Who am I?</div>
                 </div>
+              </section>
+              <section>
+                <div class="profile">
+                  <div class="profile__pic">
+                    <img src="images/pawa.jpg">
+                  </div>
+                  <div class="profile__text">
+                    <h2>Patrick Walther</h2>
+                    <ul>
+                      <li class="fragment" data-fragment-index="1">Joined Zühlke in 2013</li>
+                      <li class="fragment" data-fragment-index="2">Started as Java Developer</li>
+                      <li class="fragment" data-fragment-index="3">Soon got addicted to JS</li>
+                      <br>
+                      <li class="fragment" data-fragment-index="4">Still addicted...</li>
+                    </ul>
+                  </div>
+                  <aside class="notes">
+                    Note about function construct instantiated with new<br>
+                    No idea why but got addicted
+                  </aside>
+                </div>
+              </section>
             </section>
 
-            <section data-state='orange'>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash page to start a chapter</div>
-                    <div class="zuehlke-splash-subtitle">with subtitle</div>
-                </div>
-            </section>
-            <section data-background="images/presentation/lake_large.jpg">
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
-                </div>
-            </section>
-
-            <section data-title="First Page with Header" class='left'>
-                <h2>Lorem ipsum</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisici elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua.
-                </p>
-                <p>
-                    <pre>
-                        <code data-trim contenteditable>
-                            &lt;section data-title="First Page with Header" class='left'&gt;
-                        </code>
-                    </pre>
-                </p>
-                <p>
-                    presentation.css:
-                    <pre>
-                        <code data-trim contenteditable>
-                            span#zuehlke-header:before { content: "Demo - "; font-weight: normal; color: #dddddd; }
-                        </code>
-                    </pre>
-                </p>
-            </section>
             <section>
-                <h2>Print your presentation</h2>
-                <p>This is easy: use the suffix
-                    <a href="?print-pdf">?print-pdf</a>&nbsp;in the address bar to enter print mode</p>
-            </section>
-
-            <section data-title="Simple Page with speaker notes">
-                <h2>Speaker notes</h2>
+              <section data-state='orange'>
+                <div class="zuehlke-center">
+                    <div class="zuehlke-splash-title">Why am I telling you about Prototypes?</div>
+                </div>
+              </section>
+              <section>
+                <div class="zuehlke-center">
+                    <h2>They are so 2014...</h2>
+                </div>
+              </section>
+              <section>
                 <p>
-                    Press 's' on the keyboard
+                  Since EcmaScript 2015 we have the `class` keyword.<br><br>
+                  Why would we still need to think about Prototypes?
                 </p>
                 <aside class="notes">
-                    Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
+                  There's some confusion since ES 2015
                 </aside>
+              </section>
             </section>
 
-            <section data-title="Image with shadow">
-                <p>Image with nice shadow effect:</p>
+            <section>
+              <section data-state='orange'>
+                <div class="zuehlke-center">
+                    <div class="zuehlke-splash-title">What are Prototypes?</div>
+                </div>
+              </section>
+              <section>
+                <h2>[[Prototype]]</h2>
                 <p>
-                    <img src="images/presentation/wtf.gif" class="shadow" />
+                  Property on each Object<br><br>
+                  Pointing to another Object<br><br>
+                  Until Object.prototype
                 </p>
-                <pre>
-                    <code data-trim contenteditable>
-                        <img src="images/presentation/wtf.gif" class="shadow" />
+                <aside class="notes">
+                  Reference<br>
+                  any JS Object with props and functions<br>
+                  toString, valueOf, isPrototypeOf
+                </aside>
+              </section>
+              <section>
+                <div class="zuehlke-center">
+                    <h2>What is the reference used for?</h2>
+                </div>
+              </section>
+              <section>
+                <h2>[[Get]]</h2>
+                <pre class="no-shadow">
+                    <code data-trim contenteditable class="js">
+const person = {
+  name: 'jane'
+};
+
+person.name; // jane
+
+person.age; // will travel up prototype chain
                     </code>
                 </pre>
+                <ul>
+                  <li>Try to find property in Object</li>
+                  <li>Try to find property in Prototype</li>
+                  <li>and so on</li>
+                </ul>
+                <aside class="notes">
+                  Internal mechanism will do a get call which will travel up prototype chain
+                </aside>
+              </section>
+              <section>
+                <h2>[[Put]]</h2>
+                <ul>
+                  <li>Shadowing</li>
+                </ul>
+                <pre class="no-shadow">
+                    <code data-trim contenteditable class="js">
+const personProto = {
+  name: 'Hans';
+};
+const person = Object.create(personProto);
+
+person.name; // 'Hans'
+
+person.age = 34; // 34
+person.name = 'Jane'; // 'Jane'
+
+personProto.name; // 'Hans'
+                    </code>
+                </pre>
+                <aside class="notes">
+                  overwrite property on object<br>
+                  traverse prototype chain but set on current object<br>
+                  But why do we traverse the prototype chain?
+                </aside>
+              </section>
+              <section>
+                <ul>
+                  <li>Read-only properties</li>
+                </ul>
+                <pre class="no-shadow">
+                    <code data-trim contenteditable class="js">
+const personProto = { };
+Object.defineProperty(personProto, 'name', {
+    value: 'Hans',
+    writable: false,
+    configurable: true,
+    enumerable: true
+});
+
+person.name = 'Jane';
+
+person.name; // 'Hans'
+                    </code>
+                </pre>
+                <aside class="notes">
+                  writable obvious<br>
+                  configurable if type can be changed and it can be deleted<br>
+                  enumerable if it shows up during iteration over properties
+                </aside>
+              </section>
+              <section>
+                <h2>Prototypal Inheritance</h2>
+                <img src="images/prototype-chain.png">
+                <aside class="notes">
+                  Reference<br>
+                  any JS Object with props and functions<br>
+                  toString, valueOf, isPrototypeOf
+                </aside>
+              </section>
             </section>
 
-            <section data-title="Example of pie chart" data-state="chart">
-                <h2>Destkop vs. Phone vs. Tablet</h2>
-                <canvas height="400px" width="900px" id="desktopMobileDistributionChart"></canvas>
-                <p>
-                    see presentation.js for code and help yourself with
-                    <a href="http://www.chartjs.org/" target="_blank">chartjs
-                    </a>
-
-                </p>
-            </section>
-
-            <section data-title="Example of bar cahrt" data-state="chart">
-                <h2>Mobile Devices</h2>
-                <canvas class="left" height="400px" width="750px" id="mobileDeviceChart"></canvas>
-
-                <div class="left" style="text-align: left;">
-                    <p style="padding:0;">Apple 71%</p>
-                    <p style="padding:0;">Samsung 18%</p>
-                    <p style="padding:0;">HTC 2%</p>
-                    <p style="padding:0;">Sony 1.5%</p>
-                    <p style="padding:0;">Nokia 0.8%</p>
-                </div>
-            </section>
-
-            <!-- Example of nested vertical slides -->
             <section>
-                <section>
-                    <h2>Vertical Slides</h2>
-                    <p>
-                        Slides can be nested inside of other slides, try pressing
-                        <a href="#" class="navigate-down">down</a>.
-                    </p>
-                    <a href="#" class="image navigate-down">
-                        <img width="178" height="238" src="images/arrow.png" alt="Down arrow">
-                    </a>
-                </section>
-                <section>
-                    <h2>Basement Level 1</h2>
-                    <p>Press down or up to navigate.</p>
-                </section>
-                <section>
-                    <h2>Basement Level 2</h2>
-                    <p>That's it, time to go back up.</p>
-                    <a href="#/2" class="image">
-                        <img width="178" height="238" src="images/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-                    </a>
-                </section>
+              <section data-state='orange'>
+                <div class="zuehlke-center">
+                    <div class="zuehlke-splash-title">How do they interfere with `class`?</div>
+                </div>
+              </section>
+              <section data-background="images/live-coding.jpg"></section>
             </section>
+
             <section>
-                <h2>Point of View</h2>
-                <p>
-                    Press
-                    <strong>ESC</strong>to enter the slide overview.
-                </p>
-                <p>
-                    Hold down alt and click on any element to zoom in on it using
-                    <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-                </p>
-            </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=0>
+              <section data-state='orange'>
                 <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
+                    <div class="zuehlke-splash-title">What makes them great?</div>
                 </div>
+              </section>
+              <section>
+                <h2>OLOO</h2>
+                <ul>
+                  <li>How JS Objects work</li>
+                  <li>Simple</li>
+                  <li>Flexible</li>
+                  <li>Dynamic</li>
+                  <li>Less Verbose</li>
+                  <li>Fast</li>
+                </ul>
+                <aside class="notes">
+                  try work around but still using them under the hood (class)<br>
+                  basically a reference -> OLOO<br>
+                  working with regular JS Objects. All possibilities
+                </aside>
+              </section>
+              <section data-background="images/live-coding.jpg"></section>
             </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=1>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
-                </div>
-            </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=2>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
-                </div>
-            </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=3>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
-                </div>
-            </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=4>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">Splash with full bg image</div>
-                </div>
-            </section>
-            <section data-transition="linear" data-state="zuehlke-bg-parallax" data-parallax-step=5>
-                <div class="zuehlke-center">
-                    <div class="zuehlke-splash-title">THE END</div>
-                </div>
-            </section>
+
+
         </div>
 
     </div>
@@ -235,8 +272,8 @@
             transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
             // Parallax scrolling
-            // parallaxBackgroundImage: 'images/presentation/sidney_night.jpg',
-            // parallaxBackgroundSize: '5241px 1116px',
+            // parallaxBackgroundImage: 'images/Porto.jpg',
+            // parallaxBackgroundSize: '10189px 2500px',
 
             // Optional libraries used to extend on reveal.js
             dependencies: [{

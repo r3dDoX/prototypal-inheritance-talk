@@ -563,3 +563,7 @@ div .chart-bar {
     padding-top: 0px;
 
 }
+
+pre.no-shadow {
+  box-shadow: none;
+}
